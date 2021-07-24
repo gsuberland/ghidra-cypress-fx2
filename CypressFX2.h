@@ -1,0 +1,229 @@
+#pragma pack(1)
+
+typedef unsigned char    byte;
+
+typedef enum FX2_REG_BITS_CPUCS {
+	CPUCS_8051RES = 1,
+	CPUCS_CLKOE = 1<<1,
+	CPUCS_CLKINV = 1<<2,
+	CPUCS_CLKSPD_24MHz = 1<<3,
+	CPUCS_CLKSPD_48MHz = 2<<3,
+	CPUCS_PORTCSTB = 1<<5
+} FX2_REG_BITS_CPUCS;
+
+typedef enum FX2_REG_BITS_IFCONFIG {
+	IFCONFIG_IFCFG_INTERFACE_GPIF = 2, /* Select GPIF interface instead of ports */
+	IFCONFIG_IFCFG_INTERFACE_FIFO = 3, /* Select FIFO interface instead of ports */
+	IFCONFIG_GSTATE = 1<<2, /* Drive GSTATE[2:0] on PORTE[2:0] */
+	IFCONFIG_ASYNC = 1<<3, /* FIFO/GPIF Asnychronous Mode (Set=Async, Clear=Synch) */
+	IFCONFIG_IFCLKPOL = 1<<4, /* Invert IFCLK signal (Set=Invert, Clear=Normal) */
+	IFCONFIG_IFCLKOE = 1<<5, /* IFCLK pin output enable (Set=Drive, Clear=Tristate) */
+	IFCONFIG_3048MHZ = 1<<6, /* Internal FIFO/GPIF Clock Frequency (Set=48MHz, Clear=30MHz) */
+	IFCONFIG_IFCLKSRC = 1<<7 /* Select external clock (Set=Internal, Clear=External) */
+} FX2_REG_BITS_IFCONFIG;
+
+typedef enum FX2_REG_BITS_PINFLAGSAB {
+	PINFLAGSAB_FLAGA0 = 1,
+	PINFLAGSAB_FLAGA1 = 1<<1,
+	PINFLAGSAB_FLAGA2 = 1<<2,
+	PINFLAGSAB_FLAGA3 = 1<<3,
+	PINFLAGSAB_FLAGB0 = 1<<4,
+	PINFLAGSAB_FLAGB1 = 1<<5,
+	PINFLAGSAB_FLAGB2 = 1<<6,
+	PINFLAGSAB_FLAGB3 = 1<<7
+} FX2_REG_BITS_PINFLAGSAB;
+
+typedef enum FX2_REG_BITS_PINFLAGSCD {
+	PINFLAGSAB_FLAGC0 = 1,
+	PINFLAGSAB_FLAGC1 = 1<<1,
+	PINFLAGSAB_FLAGC2 = 1<<2,
+	PINFLAGSAB_FLAGC3 = 1<<3,
+	PINFLAGSAB_FLAGD0 = 1<<4,
+	PINFLAGSAB_FLAGD1 = 1<<5,
+	PINFLAGSAB_FLAGD2 = 1<<6,
+	PINFLAGSAB_FLAGD3 = 1<<7
+} FX2_REG_BITS_PINFLAGSCD;
+
+typedef enum FX2_REG_BITS_FIFORESET {
+	FIFORESET_EP0 = 1,
+	FIFORESET_EP1 = 1<<1,
+	FIFORESET_EP2 = 1<<2,
+	FIFORESET_EP3 = 1<<3,
+	FIFORESET_NAKALL = 1<<7 /* Write to NAK all transfers from the host */
+} FX2_REG_BITS_FIFORESET;
+
+typedef enum FX2_REG_BITS_BREAKPT {
+	BREAKPT_BPEN = 1<<1, /* Breakpoint Enable */
+	BREAKPT_BPPULSE = 1<<2, /* Breakpoint Pulse Mode (Set = pulse BREAK for 8 cycles, Clear = BREAK high until cleared) */
+	BREAKPT_BREAK = 1<<3 /* Enable Breakpoint */
+} FX2_REG_BITS_BREAKPT;
+
+typedef enum FX2_REG_BITS_UART230 {
+	UART230_230UART0 = 1, /* 230KBaud (UART0) */
+	UART230_230UART1 = 1<<1, /* 230KBaud (UART1) */
+} FX2_REG_BITS_UART230;
+
+typedef enum FX2_REG_BITS_FIFOPINPOLAR
+{
+	FIFOPINPOLAR_FF = 1, /* Full Flag Polarity (Set = active high, Clear = active low) */
+	FIFOPINPOLAR_EF = 1<<1, /* Empty Flag Polarity (Set = active high, Clear = active low) */
+	FIFOPINPOLAR_SLWR = 1<<2, /* FIFO Write Polarity (Set = active high, Clear = active low) */
+	FIFOPINPOLAR_SLRD = 1<<3, /* FIFO Read Polarity (Set = active high, Clear = active low) */
+	FIFOPINPOLAR_SLOE = 1<<4, /* FIFO Output Enable Polarity (Set = active high, Clear = active low) */
+	FIFOPINPOLAR_PKTEND = 1<<5 /* FIFO Packet End Polarity (Set = active high, Clear = active low) */
+} FX2_REG_BITS_FIFOPINPOLAR;
+
+typedef enum FX2_REG_BITS_REVCTL {
+	REVCTL_ENH_PKT = 1, /* Enhanced Packet Handling */
+	REVCTL_DYN_OUT = 1<<1, /* Disable Auto-Arming at the 0-1 transition of AUTOOUT */
+} FX2_REG_BITS_REVCTL;
+
+typedef enum FX2_REG_VAL_GPIFHOLDTIME {
+	GPIFHOLDTIME_ZERO_CYCLES = 0,
+	GPIFHOLDTIME_HALF_IFCLK = 1,
+	GPIFHOLDTIME_ONE_IFCLK = 2,
+} FX2_REG_VAL_GPIFHOLDTIME;
+
+typedef enum FX2_REG_BITS_EP1OUTCFG {
+	EP1OUTCFG_BULK = 2<<4, /* Bulk endpoint type (Default) */
+	EP1OUTCFG_INTERRUPT = 3<<4, /* Interrupt endpoint type */
+	EP1OUTCFG_VALID = 1<<7, /* Activate endpoint */
+} FX2_REG_BITS_EP1OUTCFG;
+
+typedef enum FX2_REG_BITS_EP1INCFG {
+	EP1INCFG_BULK = 2<<4, /* Bulk endpoint type (Default) */
+	EP1INCFG_INTERRUPT = 3<<4, /* Interrupt endpoint type */
+	EP1INCFG_VALID = 1<<7, /* Activate endpoint */
+} FX2_REG_BITS_EP1INCFG;
+
+typedef enum FX2_REG_BITS_EP2CFG {
+	EP2CFG_BUF_DOUBLE = 2,
+	EP2CFG_BUF_TRIPLE = 3,
+	EP2CFG_SIZE = 1<<3, /* Size of endpoint buffer (0 = 512, 1 = 1024) */
+	EP2CFG_TYPE_ISOCHRONOUS = 1<<4,
+	EP2CFG_TYPE_BULK = 2<<4,
+	EP2CFG_TYPE_INTERRUPT = 3<<4,
+	EP2CFG_DIR = 1<<6, /* Endpoint direction (0 = out, 1 = in) */
+	EP2CFG_VALID = 1<<7, /* Activate endpoint */
+} FX2_REG_BITS_EP2CFG;
+
+typedef enum FX2_REG_BITS_EP4CFG {
+	EP4CFG_SIZE = 1<<3, /* Size of endpoint buffer (0 = 512, 1 = 1024) */
+	EP4CFG_TYPE_ISOCHRONOUS = 1<<4,
+	EP4CFG_TYPE_BULK = 2<<4,
+	EP4CFG_TYPE_INTERRUPT = 3<<4,
+	EP4CFG_DIR = 1<<6, /* Endpoint direction (0 = out, 1 = in) */
+	EP4CFG_VALID = 1<<7, /* Activate endpoint */
+} FX2_REG_BITS_EP4CFG;
+
+typedef enum FX2_REG_BITS_EP6CFG {
+	EP6CFG_BUF_DOUBLE = 2,
+	EP6CFG_BUF_TRIPLE = 3,
+	EP6CFG_SIZE = 1<<3, /* Size of endpoint buffer (0 = 512, 1 = 1024) */
+	EP6CFG_TYPE_ISOCHRONOUS = 1<<4,
+	EP6CFG_TYPE_BULK = 2<<4,
+	EP6CFG_TYPE_INTERRUPT = 3<<4,
+	EP6CFG_DIR = 1<<6, /* Endpoint direction (0 = out, 1 = in) */
+	EP6CFG_VALID = 1<<7, /* Activate endpoint */
+} FX2_REG_BITS_EP6CFG;
+
+typedef enum FX2_REG_BITS_EP8CFG {
+	EP8CFG_SIZE = 1<<3, /* Size of endpoint buffer (0 = 512, 1 = 1024) */
+	EP8CFG_TYPE_ISOCHRONOUS = 1<<4,
+	EP8CFG_TYPE_BULK = 2<<4,
+	EP8CFG_TYPE_INTERRUPT = 3<<4,
+	EP8CFG_DIR = 1<<6, /* Endpoint direction (0 = out, 1 = in) */
+	EP8CFG_VALID = 1<<7, /* Activate endpoint */
+} FX2_REG_BITS_EP8CFG;
+
+typedef enum FX2_REG_BITS_EP2FIFOCFG {
+	EP2FIFOCFG_WORDWIDE = 1,
+	EP2FIFOCFG_ZEROLENIN = 1<<2,
+	EP2FIFOCFG_AUTOIN = 1<<3,
+	EP2FIFOCFG_AUTOOUT = 1<<4,
+	EP2FIFOCFG_OEP1 = 1<<5,
+	EP2FIFOCFG_INFM1 = 1<<6,
+} FX2_REG_BITS_EP2FIFOCFG;
+
+typedef enum FX2_REG_BITS_EP4FIFOCFG {
+	EP4FIFOCFG_WORDWIDE = 1,
+	EP4FIFOCFG_ZEROLENIN = 1<<2,
+	EP4FIFOCFG_AUTOIN = 1<<3,
+	EP4FIFOCFG_AUTOOUT = 1<<4,
+	EP4FIFOCFG_OEP1 = 1<<5,
+	EP4FIFOCFG_INFM1 = 1<<6,
+} FX2_REG_BITS_EP4FIFOCFG;
+
+typedef enum FX2_REG_BITS_EP6FIFOCFG {
+	EP6FIFOCFG_WORDWIDE = 1,
+	EP6FIFOCFG_ZEROLENIN = 1<<2,
+	EP6FIFOCFG_AUTOIN = 1<<3,
+	EP6FIFOCFG_AUTOOUT = 1<<4,
+	EP6FIFOCFG_OEP1 = 1<<5,
+	EP6FIFOCFG_INFM1 = 1<<6,
+} FX2_REG_BITS_EP6FIFOCFG;
+
+typedef enum FX2_REG_BITS_EP8FIFOCFG {
+	EP8FIFOCFG_WORDWIDE = 1,
+	EP8FIFOCFG_ZEROLENIN = 1<<2,
+	EP8FIFOCFG_AUTOIN = 1<<3,
+	EP8FIFOCFG_AUTOOUT = 1<<4,
+	EP8FIFOCFG_OEP1 = 1<<5,
+	EP8FIFOCFG_INFM1 = 1<<6,
+} FX2_REG_BITS_EP8FIFOCFG;
+
+typedef enum FX2_REG_BITS_EP2FIFOPFH {
+	EP2FIFOPFH_PKTSTAT = 1<<6,
+	EP2FIFOPFH_DECIS = 1<<7,
+} FX2_REG_BITS_EP2FIFOPFH;
+
+typedef enum FX2_REG_BITS_EP4FIFOPFH {
+	EP4FIFOPFH_PKTSTAT = 1<<6,
+	EP4FIFOPFH_DECIS = 1<<7,
+} FX2_REG_BITS_EP4FIFOPFH;
+
+typedef enum FX2_REG_BITS_EP6FIFOPFH {
+	EP6FIFOPFH_PKTSTAT = 1<<6,
+	EP6FIFOPFH_DECIS = 1<<7,
+} FX2_REG_BITS_EP6FIFOPFH;
+
+typedef enum FX2_REG_BITS_EP8FIFOPFH {
+	EP8FIFOPFH_PKTSTAT = 1<<6,
+	EP8FIFOPFH_DECIS = 1<<7,
+} FX2_REG_BITS_EP8FIFOPFH;
+
+typedef enum FX2_REG_BITS_EP2ISOINPKTS {
+	EP2ISOINPKTS_INPPF0 = 1,
+	EP2ISOINPKTS_INPPF1 = 1<<1,
+} FX2_REG_BITS_EP2ISOINPKTS;
+
+typedef enum FX2_REG_BITS_EP4ISOINPKTS {
+	EP4ISOINPKTS_INPPF0 = 1,
+	EP4ISOINPKTS_INPPF1 = 1<<1,
+} FX2_REG_BITS_EP4ISOINPKTS;
+
+typedef enum FX2_REG_BITS_EP6ISOINPKTS {
+	EP6ISOINPKTS_INPPF0 = 1,
+	EP6ISOINPKTS_INPPF1 = 1<<1,
+} FX2_REG_BITS_EP6ISOINPKTS;
+
+typedef enum FX2_REG_BITS_EP8ISOINPKTS {
+	EP8ISOINPKTS_INPPF0 = 1,
+	EP8ISOINPKTS_INPPF1 = 1<<1,
+} FX2_REG_BITS_EP8ISOINPKTS;
+
+typedef enum FX2_REG_BITS_INPKTEND {
+	INPKTEND_EP0 = 1,
+	INPKTEND_EP1 = 1<<1,
+	INPKTEND_EP2 = 1<<2,
+	INPKTEND_EP3 = 1<<3,
+	INPKTEND_SKIP = 1<<7,
+} FX2_REG_BITS_INPKTEND;
+
+typedef enum FX2_REG_BITS_OUTPKTEND {
+	OUTPKTEND_EP0 = 1,
+	OUTPKTEND_EP1 = 1<<1,
+	OUTPKTEND_EP2 = 1<<2,
+	OUTPKTEND_EP3 = 1<<3,
+	OUTPKTEND_SKIP = 1<<7,
+} FX2_REG_BITS_OUTPKTEND;
