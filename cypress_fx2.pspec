@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<processor_spec>
+
+  <programcounter register="PC"/>
+  
+  <volatile outputop="write_volatile" inputop="read_volatile">
+    <range space="SFR" first="0x0" last="0xFF"/>
+	<!-- REGISTERS, EP0IO, EP1OUT, EP1IN, EP2BUF, EP4BUF, EP6BUF, EP8BUF -->
+	<range space="EXTMEM" first="0xe600" last="0xffff"/>
+	<!-- autovector USB -->
+	<range space="CODE" first="0x45" last="0x45"/>
+	<!-- autovector FIFO/GPIF -->
+	<range space="CODE" first="0x55" last="0x55"/>
+  </volatile>
+  
+  <default_symbols>
+  
+    <symbol name="BANK0_R0" address="INTMEM:00"/>
+    <symbol name="BANK0_R1" address="INTMEM:01"/>
+    <symbol name="BANK0_R2" address="INTMEM:02"/>
+    <symbol name="BANK0_R3" address="INTMEM:03"/>
+    <symbol name="BANK0_R4" address="INTMEM:04"/>
+    <symbol name="BANK0_R5" address="INTMEM:05"/>
+    <symbol name="BANK0_R6" address="INTMEM:06"/>
+    <symbol name="BANK0_R7" address="INTMEM:07"/>
+    
+    <symbol name="BANK1_R0" address="INTMEM:08"/>
+    <symbol name="BANK1_R1" address="INTMEM:09"/>
+    <symbol name="BANK1_R2" address="INTMEM:0a"/>
+    <symbol name="BANK1_R3" address="INTMEM:0b"/>
+    <symbol name="BANK1_R4" address="INTMEM:0c"/>
+    <symbol name="BANK1_R5" address="INTMEM:0d"/>
+    <symbol name="BANK1_R6" address="INTMEM:0e"/>
+    <symbol name="BANK1_R7" address="INTMEM:0f"/>
+    
+    <symbol name="BANK2_R0" address="INTMEM:10"/>
+    <symbol name="BANK2_R1" address="INTMEM:11"/>
+    <symbol name="BANK2_R2" address="INTMEM:12"/>
+    <symbol name="BANK2_R3" address="INTMEM:13"/>
+    <symbol name="BANK2_R4" address="INTMEM:14"/>
+    <symbol name="BANK2_R5" address="INTMEM:15"/>
+    <symbol name="BANK2_R6" address="INTMEM:16"/>
+    <symbol name="BANK2_R7" address="INTMEM:17"/>
+    
+    <symbol name="BANK3_R0" address="INTMEM:18"/>
+    <symbol name="BANK3_R1" address="INTMEM:19"/>
+    <symbol name="BANK3_R2" address="INTMEM:1a"/>
+    <symbol name="BANK3_R3" address="INTMEM:1b"/>
+    <symbol name="BANK3_R4" address="INTMEM:1c"/>
+    <symbol name="BANK3_R5" address="INTMEM:1d"/>
+    <symbol name="BANK3_R6" address="INTMEM:1e"/>
+    <symbol name="BANK3_R7" address="INTMEM:1f"/>
+  
+    <symbol name="IOA" address="SFR:80"/>
+	<symbol name="SP" address="SFR:81"/>
+	<symbol name="DPL" address="SFR:82"/>
+	<symbol name="DPH" address="SFR:83"/>
+	<symbol name="DPL1" address="SFR:84"/>
+	<symbol name="DPH1" address="SFR:85"/>
+	<symbol name="DPS" address="SFR:86"/>
+    <symbol name="PCON" address="SFR:87"/>
+    <symbol name="TCON" address="SFR:88"/>
+    <symbol name="TMOD" address="SFR:89"/>
+    <symbol name="TL0" address="SFR:8a"/>
+    <symbol name="TL1" address="SFR:8b"/>
+    <symbol name="TH0" address="SFR:8c"/>
+    <symbol name="TH1" address="SFR:8d"/>
+    <symbol name="CKCON" address="SFR:8e"/>
+    <symbol name="IOB" address="SFR:90"/>
+    <symbol name="EXIF" address="SFR:91"/>
+    <symbol name="MPAGE" address="SFR:92"/>
+    <symbol name="SCON0" address="SFR:98"/>
+    <symbol name="SBUF0" address="SFR:99"/>
+    <symbol name="AUTOPTRH1" address="SFR:9a"/>
+    <symbol name="AUTOPTRL1" address="SFR:9b"/>
+	<symbol name="AUTOPTRH2" address="SFR:9d"/>
+    <symbol name="AUTOPTRL2" address="SFR:9e"/>
+    <symbol name="IOC" address="SFR:a0"/>
+    <symbol name="INT2CLR" address="SFR:a1"/>
+    <symbol name="INT4CLR" address="SFR:a2"/>
+    <symbol name="IE" address="SFR:a8"/>
+    <symbol name="EP2468STAT" address="SFR:aa"/>
+	<symbol name="EP24FIFOFLAGS" address="SFR:ab"/>
+	<symbol name="EP68FIFOFLAGS" address="SFR:ac"/>
+	<symbol name="AUTOPTRSETUP" address="SFR:af"/>
+    <symbol name="IOD" address="SFR:b0"/>
+    <symbol name="IOE" address="SFR:b1"/>
+    <symbol name="OEA" address="SFR:b2"/>
+    <symbol name="OEB" address="SFR:b3"/>
+    <symbol name="OEC" address="SFR:b4"/>
+	<symbol name="OED" address="SFR:b5"/>
+	<symbol name="OEE" address="SFR:b6"/>
+    <symbol name="IP" address="SFR:b8"/>
+    <symbol name="EP01STAT" address="SFR:ba"/>
+	<symbol name="GPIFTRIG" address="SFR:bb"/>
+    <symbol name="GPIFSGLDATH" address="SFR:bd"/>
+	<symbol name="GPIFSGLDATLX" address="SFR:be"/>
+	<symbol name="GPIFSGLDATLNOX" address="SFR:bf"/>
+    <symbol name="SCON1" address="SFR:c0"/>
+    <symbol name="SBUF1" address="SFR:c1"/>
+    <symbol name="T2CON" address="SFR:c8"/>
+    <symbol name="RCAP2L" address="SFR:ca"/>
+    <symbol name="RCAP2H" address="SFR:cb"/>
+    <symbol name="TL2" address="SFR:cc"/>
+    <symbol name="TH2" address="SFR:cd"/>
+    <symbol name="PSW" address="SFR:d0"/>
+    <symbol name="EICON" address="SFR:d8"/>
+	<symbol name="ACC" address="SFR:e0"/>
+    <symbol name="EIE" address="SFR:e8"/>
+	<symbol name="B" address="SFR:f0"/>
+    <symbol name="EIP" address="SFR:f8"/>
+    
+    <symbol name="20.0" address="BITS:00"/>
+    <symbol name="20.1" address="BITS:01"/>
+    <symbol name="20.2" address="BITS:02"/>
+    <symbol name="20.3" address="BITS:03"/>
+    <symbol name="20.4" address="BITS:04"/>
+    <symbol name="20.5" address="BITS:05"/>
+    <symbol name="20.6" address="BITS:06"/>
+    <symbol name="20.7" address="BITS:07"/>
+    <symbol name="21.0" address="BITS:08"/>
+    <symbol name="21.1" address="BITS:09"/>
+    <symbol name="21.2" address="BITS:0a"/>
+    <symbol name="21.3" address="BITS:0b"/>
+    <symbol name="21.4" address="BITS:0c"/>
+    <symbol name="21.5" address="BITS:0d"/>
+    <symbol name="21.6" address="BITS:0e"/>
+    <symbol name="21.7" address="BITS:0f"/>
+    <symbol name="22.0" address="BITS:10"/>
+    <symbol name="22.1" address="BITS:11"/>
+    <symbol name="22.2" address="BITS:12"/>
+    <symbol name="22.3" address="BITS:13"/>
+    <symbol name="22.4" address="BITS:14"/>
+    <symbol name="22.5" address="BITS:15"/>
+    <symbol name="22.6" address="BITS:16"/>
+    <symbol name="22.7" address="BITS:17"/>
+    <symbol name="23.0" address="BITS:18"/>
+    <symbol name="23.1" address="BITS:19"/>
+    <symbol name="23.2" address="BITS:1a"/>
+    <symbol name="23.3" address="BITS:1b"/>
+    <symbol name="23.4" address="BITS:1c"/>
+    <symbol name="23.5" address="BITS:1d"/>
+    <symbol name="23.6" address="BITS:1e"/>
+    <symbol name="23.7" address="BITS:1f"/>
+    <symbol name="24.0" address="BITS:20"/>
+    <symbol name="24.1" address="BITS:21"/>
+    <symbol name="24.2" address="BITS:22"/>
+    <symbol name="24.3" address="BITS:23"/>
+    <symbol name="24.4" address="BITS:24"/>
+    <symbol name="24.5" address="BITS:25"/>
+    <symbol name="24.6" address="BITS:26"/>
+    <symbol name="24.7" address="BITS:27"/>
+    <symbol name="25.0" address="BITS:28"/>
+    <symbol name="25.1" address="BITS:29"/>
+    <symbol name="25.2" address="BITS:2a"/>
+    <symbol name="25.3" address="BITS:2b"/>
+    <symbol name="25.4" address="BITS:2c"/>
+    <symbol name="25.5" address="BITS:2d"/>
+    <symbol name="25.6" address="BITS:2e"/>
+    <symbol name="25.7" address="BITS:2f"/>
+    <symbol name="26.0" address="BITS:30"/>
+    <symbol name="26.1" address="BITS:31"/>
+    <symbol name="26.2" address="BITS:32"/>
+    <symbol name="26.3" address="BITS:33"/>
+    <symbol name="26.4" address="BITS:34"/>
+    <symbol name="26.5" address="BITS:35"/>
+    <symbol name="26.6" address="BITS:36"/>
+    <symbol name="26.7" address="BITS:37"/>
+    <symbol name="27.0" address="BITS:38"/>
+    <symbol name="27.1" address="BITS:39"/>
+    <symbol name="27.2" address="BITS:3a"/>
+    <symbol name="27.3" address="BITS:3b"/>
+    <symbol name="27.4" address="BITS:3c"/>
+    <symbol name="27.5" address="BITS:3d"/>
+    <symbol name="27.6" address="BITS:3e"/>
+    <symbol name="27.7" address="BITS:3f"/>
+    <symbol name="28.0" address="BITS:40"/>
+    <symbol name="28.1" address="BITS:41"/>
+    <symbol name="28.2" address="BITS:42"/>
+    <symbol name="28.3" address="BITS:43"/>
+    <symbol name="28.4" address="BITS:44"/>
+    <symbol name="28.5" address="BITS:45"/>
+    <symbol name="28.6" address="BITS:46"/>
+    <symbol name="28.7" address="BITS:47"/>
+    <symbol name="29.0" address="BITS:48"/>
+    <symbol name="29.1" address="BITS:49"/>
+    <symbol name="29.2" address="BITS:4a"/>
+    <symbol name="29.3" address="BITS:4b"/>
+    <symbol name="29.4" address="BITS:4c"/>
+    <symbol name="29.5" address="BITS:4d"/>
+    <symbol name="29.6" address="BITS:4e"/>
+    <symbol name="29.7" address="BITS:4f"/>
+    <symbol name="2a.0" address="BITS:50"/>
+    <symbol name="2a.1" address="BITS:51"/>
+    <symbol name="2a.2" address="BITS:52"/>
+    <symbol name="2a.3" address="BITS:53"/>
+    <symbol name="2a.4" address="BITS:54"/>
+    <symbol name="2a.5" address="BITS:55"/>
+    <symbol name="2a.6" address="BITS:56"/>
+    <symbol name="2a.7" address="BITS:57"/>
+    <symbol name="2b.0" address="BITS:58"/>
+    <symbol name="2b.1" address="BITS:59"/>
+    <symbol name="2b.2" address="BITS:5a"/>
+    <symbol name="2b.3" address="BITS:5b"/>
+    <symbol name="2b.4" address="BITS:5c"/>
+    <symbol name="2b.5" address="BITS:5d"/>
+    <symbol name="2b.6" address="BITS:5e"/>
+    <symbol name="2b.7" address="BITS:5f"/>
+    <symbol name="2c.0" address="BITS:60"/>
+    <symbol name="2c.1" address="BITS:61"/>
+    <symbol name="2c.2" address="BITS:62"/>
+    <symbol name="2c.3" address="BITS:63"/>
+    <symbol name="2c.4" address="BITS:64"/>
+    <symbol name="2c.5" address="BITS:65"/>
+    <symbol name="2c.6" address="BITS:66"/>
+    <symbol name="2c.7" address="BITS:67"/>
+    <symbol name="2d.0" address="BITS:68"/>
+    <symbol name="2d.1" address="BITS:69"/>
+    <symbol name="2d.2" address="BITS:6a"/>
+    <symbol name="2d.3" address="BITS:6b"/>
+    <symbol name="2d.4" address="BITS:6c"/>
+    <symbol name="2d.5" address="BITS:6d"/>
+    <symbol name="2d.6" address="BITS:6e"/>
+    <symbol name="2d.7" address="BITS:6f"/>
+    <symbol name="2e.0" address="BITS:70"/>
+    <symbol name="2e.1" address="BITS:71"/>
+    <symbol name="2e.2" address="BITS:72"/>
+    <symbol name="2e.3" address="BITS:73"/>
+    <symbol name="2e.4" address="BITS:74"/>
+    <symbol name="2e.5" address="BITS:75"/>
+    <symbol name="2e.6" address="BITS:76"/>
+    <symbol name="2e.7" address="BITS:77"/>
+    <symbol name="2f.0" address="BITS:78"/>
+    <symbol name="2f.1" address="BITS:79"/>
+    <symbol name="2f.2" address="BITS:7a"/>
+    <symbol name="2f.3" address="BITS:7b"/>
+    <symbol name="2f.4" address="BITS:7c"/>
+    <symbol name="2f.5" address="BITS:7d"/>
+    <symbol name="2f.6" address="BITS:7e"/>
+    <symbol name="2f.7" address="BITS:7f"/>
+    
+    <symbol name="IOA.0" address="BITS:80"/>
+    <symbol name="IOA.1" address="BITS:81"/>
+    <symbol name="IOA.2" address="BITS:82"/>
+    <symbol name="IOA.3" address="BITS:83"/>
+    <symbol name="IOA.4" address="BITS:84"/>
+    <symbol name="IOA.5" address="BITS:85"/>
+    <symbol name="IOA.6" address="BITS:86"/>
+    <symbol name="IOA.7" address="BITS:87"/>
+    <symbol name="IT0" address="BITS:88"/>
+    <symbol name="IE0" address="BITS:89"/>
+    <symbol name="IT1" address="BITS:8a"/>
+    <symbol name="IE1" address="BITS:8b"/>
+    <symbol name="TR0" address="BITS:8c"/>
+    <symbol name="TF0" address="BITS:8d"/>
+    <symbol name="TR1" address="BITS:8e"/>
+    <symbol name="TF1" address="BITS:8f"/>
+    <symbol name="IOB.0" address="BITS:90"/>
+    <symbol name="IOB.1" address="BITS:91"/>
+    <symbol name="IOB.2" address="BITS:92"/>
+    <symbol name="IOB.3" address="BITS:93"/>
+    <symbol name="IOB.4" address="BITS:94"/>
+    <symbol name="IOB.5" address="BITS:95"/>
+    <symbol name="IOB.6" address="BITS:96"/>
+    <symbol name="IOB.7" address="BITS:97"/>
+    <symbol name="RI_0" address="BITS:98"/>
+    <symbol name="TI_0" address="BITS:99"/>
+    <symbol name="RB8_0" address="BITS:9a"/>
+    <symbol name="TB8_0" address="BITS:9b"/>
+    <symbol name="REN_0" address="BITS:9c"/>
+    <symbol name="SM2_0" address="BITS:9d"/>
+    <symbol name="SM1_0" address="BITS:9e"/>
+    <symbol name="SM0_0" address="BITS:9f"/>
+    <symbol name="IOC.0" address="BITS:a0"/>
+    <symbol name="IOC.1" address="BITS:a1"/>
+    <symbol name="IOC.2" address="BITS:a2"/>
+    <symbol name="IOC.3" address="BITS:a3"/>
+    <symbol name="IOC.4" address="BITS:a4"/>
+    <symbol name="IOC.5" address="BITS:a5"/>
+    <symbol name="IOC.6" address="BITS:a6"/>
+    <symbol name="IOC.7" address="BITS:a7"/>
+    <symbol name="EX0" address="BITS:a8"/>
+    <symbol name="ET0" address="BITS:a9"/>
+    <symbol name="EX1" address="BITS:aa"/>
+    <symbol name="ET1" address="BITS:ab"/>
+    <symbol name="ES0" address="BITS:ac"/>
+    <symbol name="ET2" address="BITS:ad"/>
+    <symbol name="ES1" address="BITS:ae"/>
+    <symbol name="EA" address="BITS:af"/>
+    <symbol name="IOD.0" address="BITS:b0"/>
+    <symbol name="IOD.1" address="BITS:b1"/>
+    <symbol name="IOD.2" address="BITS:b2"/>
+    <symbol name="IOD.3" address="BITS:b3"/>
+    <symbol name="IOD.4" address="BITS:b4"/>
+    <symbol name="IOD.5" address="BITS:b5"/>
+    <symbol name="IOD.6" address="BITS:b6"/>
+    <symbol name="IOD.7" address="BITS:b7"/>
+    <symbol name="PX0" address="BITS:b8"/>
+    <symbol name="PT0" address="BITS:b9"/>
+    <symbol name="PX1" address="BITS:ba"/>
+    <symbol name="PT1" address="BITS:bb"/>
+    <symbol name="PS0" address="BITS:bc"/>
+    <symbol name="PT2" address="BITS:bd"/>
+    <symbol name="PS1" address="BITS:be"/>
+    <symbol name="IP.7" address="BITS:bf"/>
+    <symbol name="RI_1" address="BITS:c0"/>
+    <symbol name="TI_1" address="BITS:c1"/>
+    <symbol name="RB8_1" address="BITS:c2"/>
+    <symbol name="TB8_1" address="BITS:c3"/>
+    <symbol name="REN_1" address="BITS:c4"/>
+    <symbol name="SM2_1" address="BITS:c5"/>
+    <symbol name="SM1_1" address="BITS:c6"/>
+    <symbol name="SM0_1" address="BITS:c7"/>
+    <symbol name="CPRL2" address="BITS:c8"/>
+    <symbol name="CT2" address="BITS:c9"/>
+    <symbol name="TR2" address="BITS:ca"/>
+    <symbol name="EXEN2" address="BITS:cb"/>
+    <symbol name="TCLK" address="BITS:cc"/>
+    <symbol name="RCLK" address="BITS:cd"/>
+    <symbol name="EXF2" address="BITS:ce"/>
+    <symbol name="TF2" address="BITS:cf"/>
+    <symbol name="P" address="BITS:d0"/>
+    <symbol name="F1" address="BITS:d1"/>
+    <symbol name="OV" address="BITS:d2"/>
+    <symbol name="RS0" address="BITS:d3"/>
+    <symbol name="RS1" address="BITS:d4"/>
+    <symbol name="F0" address="BITS:d5"/>
+    <symbol name="AC" address="BITS:d6"/>
+    <symbol name="CY" address="BITS:d7"/>
+    <symbol name="EICON.0" address="BITS:d8"/>
+    <symbol name="EICON.1" address="BITS:d9"/>
+    <symbol name="EICON.2" address="BITS:da"/>
+    <symbol name="INT6" address="BITS:db"/>
+    <symbol name="RESI" address="BITS:dc"/>
+    <symbol name="ERESI" address="BITS:dd"/>
+    <symbol name="EICON.6" address="BITS:de"/>
+    <symbol name="SMOD1" address="BITS:df"/>
+    <symbol name="ACC.0" address="BITS:e0"/>
+    <symbol name="ACC.1" address="BITS:e1"/>
+    <symbol name="ACC.2" address="BITS:e2"/>
+    <symbol name="ACC.3" address="BITS:e3"/>
+    <symbol name="ACC.4" address="BITS:e4"/>
+    <symbol name="ACC.5" address="BITS:e5"/>
+    <symbol name="ACC.6" address="BITS:e6"/>
+    <symbol name="ACC.7" address="BITS:e7"/>
+    <symbol name="EUSB" address="BITS:e8"/>
+    <symbol name="EI2C" address="BITS:e9"/>
+    <symbol name="EX4" address="BITS:ea"/>
+    <symbol name="EX5" address="BITS:eb"/>
+    <symbol name="EX6" address="BITS:ec"/>
+    <symbol name="EIE.5" address="BITS:ed"/>
+    <symbol name="EIE.6" address="BITS:ee"/>
+    <symbol name="EIE.7" address="BITS:ef"/>
+    <symbol name="B.0" address="BITS:f0"/>
+    <symbol name="B.1" address="BITS:f1"/>
+    <symbol name="B.2" address="BITS:f2"/>
+    <symbol name="B.3" address="BITS:f3"/>
+    <symbol name="B.4" address="BITS:f4"/>
+    <symbol name="B.5" address="BITS:f5"/>
+    <symbol name="B.6" address="BITS:f6"/>
+    <symbol name="B.7" address="BITS:f7"/>
+    <symbol name="PUSB" address="BITS:f8"/>
+    <symbol name="PI2C" address="BITS:f9"/>
+    <symbol name="PX4" address="BITS:fa"/>
+    <symbol name="PX5" address="BITS:fb"/>
+    <symbol name="PX6" address="BITS:fc"/>
+    <symbol name="EIP.5" address="BITS:fd"/>
+    <symbol name="EIP.6" address="BITS:fe"/>
+    <symbol name="EIP.7" address="BITS:ff"/>
+	
+	<symbol name="CPUCS" address="EXTMEM:e600"/>
+	<symbol name="IFCONFIG" address="EXTMEM:e601"/>
+	<symbol name="PINFLAGSAB" address="EXTMEM:e602"/>
+	<symbol name="PINFLAGSCD" address="EXTMEM:e603"/>
+	<symbol name="FIFORESET" address="EXTMEM:e604"/>
+	<symbol name="BREAKPT" address="EXTMEM:e605"/>
+	<symbol name="BPADDRH" address="EXTMEM:e606"/>
+	<symbol name="BPADDRL" address="EXTMEM:e607"/>
+	<symbol name="UART230" address="EXTMEM:e608"/>
+	<symbol name="FIFOPINPOLAR" address="EXTMEM:e609"/>
+	<symbol name="REVID" address="EXTMEM:e60a"/>
+	<symbol name="REVCTL" address="EXTMEM:e60b"/>
+	<symbol name="GPIFHOLDTIME" address="EXTMEM:e60c"/>
+	<symbol name="EP1OUTCFG" address="EXTMEM:e610"/>
+	<symbol name="EP1INCFG" address="EXTMEM:e611"/>
+	<symbol name="EP2CFG" address="EXTMEM:e612"/>
+	<symbol name="EP4CFG" address="EXTMEM:e613"/>
+	<symbol name="EP6CFG" address="EXTMEM:e614"/>
+	<symbol name="EP8CFG" address="EXTMEM:e615"/>
+	<symbol name="EP2FIFOCFG" address="EXTMEM:e618"/>
+	<symbol name="EP4FIFOCFG" address="EXTMEM:e619"/>
+	<symbol name="EP6FIFOCFG" address="EXTMEM:e61a"/>
+	<symbol name="EP8FIFOCFG" address="EXTMEM:e61b"/>
+	<symbol name="EP2AUTOINLENH" address="EXTMEM:e620"/>
+	<symbol name="EP2AUTOINLENL" address="EXTMEM:e621"/>
+	<symbol name="EP4AUTOINLENH" address="EXTMEM:e622"/>
+	<symbol name="EP4AUTOINLENL" address="EXTMEM:e623"/>
+	<symbol name="EP6AUTOINLENH" address="EXTMEM:e624"/>
+	<symbol name="EP6AUTOINLENL" address="EXTMEM:e625"/>
+	<symbol name="EP8AUTOINLENH" address="EXTMEM:e626"/>
+	<symbol name="EP8AUTOINLENL" address="EXTMEM:e627"/>
+	<symbol name="EP2FIFOPFH" address="EXTMEM:e630"/>
+	<symbol name="EP2FIFOPFL" address="EXTMEM:e631"/>
+	<symbol name="EP4FIFOPFH" address="EXTMEM:e632"/>
+	<symbol name="EP4FIFOPFL" address="EXTMEM:e633"/>
+	<symbol name="EP6FIFOPFH" address="EXTMEM:e634"/>
+	<symbol name="EP6FIFOPFL" address="EXTMEM:e635"/>
+	<symbol name="EP8FIFOPFH" address="EXTMEM:e636"/>
+	<symbol name="EP8FIFOPFL" address="EXTMEM:e637"/>
+	<symbol name="EP2ISOINPKTS" address="EXTMEM:e640"/>
+	<symbol name="EP4ISOINPKTS" address="EXTMEM:e641"/>
+	<symbol name="EP6ISOINPKTS" address="EXTMEM:e642"/>
+	<symbol name="EP8ISOINPKTS" address="EXTMEM:e643"/>
+	<symbol name="INPKTEND" address="EXTMEM:e648"/>
+	<symbol name="OUTPKTEND0" address="EXTMEM:e649"/>
+	<symbol name="EP2FIFOIE" address="EXTMEM:e650"/>
+	<symbol name="EP2FIFOIRQ" address="EXTMEM:e651"/>
+	<symbol name="EP4FIFOIE" address="EXTMEM:e652"/>
+	<symbol name="EP4FIFOIRQ" address="EXTMEM:e653"/>
+	<symbol name="EP6FIFOIE" address="EXTMEM:e654"/>
+	<symbol name="EP6FIFOIRQ" address="EXTMEM:e655"/>
+	<symbol name="EP8FIFOIE" address="EXTMEM:e656"/>
+	<symbol name="EP8FIFOIRQ" address="EXTMEM:e657"/>
+	<symbol name="IBNIE" address="EXTMEM:e658"/>
+	<symbol name="IBNIRQ" address="EXTMEM:e659"/>
+	<symbol name="NAKIE" address="EXTMEM:e65a"/>
+	<symbol name="NAKIRQ" address="EXTMEM:e65b"/>
+	<symbol name="USBIE" address="EXTMEM:e65c"/>
+	<symbol name="USBIRQ" address="EXTMEM:e65d"/>
+	<symbol name="EPIE" address="EXTMEM:e65e"/>
+	<symbol name="EPIRQ" address="EXTMEM:e65f"/>
+	<symbol name="GPIFIE" address="EXTMEM:e660"/>
+	<symbol name="GPIFIRQ" address="EXTMEM:e661"/>
+	<symbol name="USBERRIE" address="EXTMEM:e662"/>
+	<symbol name="USBERRIRQ" address="EXTMEM:e663"/>
+	<symbol name="ERRCNTLIM" address="EXTMEM:e664"/>
+	<symbol name="CLRERRCNT" address="EXTMEM:e665"/>
+	<symbol name="INT2IVEC" address="EXTMEM:e666"/>
+	<symbol name="INT4IVEC" address="EXTMEM:e667"/>
+	<symbol name="INTSETUP" address="EXTMEM:e668"/>
+	<symbol name="PORTACFG" address="EXTMEM:e670"/>
+	<symbol name="PORTCCFG" address="EXTMEM:e671"/>
+	<symbol name="PORTECFG" address="EXTMEM:e672"/>
+	<symbol name="I2CS" address="EXTMEM:e678"/>
+	<symbol name="I2DAT" address="EXTMEM:e679"/>
+	<symbol name="I2CTL" address="EXTMEM:e67a"/>
+	<symbol name="XAUTODAT1" address="EXTMEM:e67b"/>
+	<symbol name="XAUTODAT2" address="EXTMEM:e67c"/>
+	<symbol name="UDMACRCH" address="EXTMEM:e67d"/>
+	<symbol name="UDMACRCL" address="EXTMEM:e67e"/>
+	<symbol name="UDMACRCQUALIFIER" address="EXTMEM:e67f"/>
+	<symbol name="USBCS" address="EXTMEM:e680"/>
+	<symbol name="SUSPEND" address="EXTMEM:e681"/>
+	<symbol name="WAKEUPCS" address="EXTMEM:e682"/>
+	<symbol name="TOGCTL" address="EXTMEM:e683"/>
+	<symbol name="USBFRAMEH" address="EXTMEM:e684"/>
+	<symbol name="USBFRAMEL" address="EXTMEM:e685"/>
+	<symbol name="MICROFRAME" address="EXTMEM:e686"/>
+	<symbol name="FNADDR" address="EXTMEM:e687"/>
+	<symbol name="EP0BCH" address="EXTMEM:e68a"/>
+	<symbol name="EP0BCL" address="EXTMEM:e68b"/>
+	<symbol name="EP1OUTBC" address="EXTMEM:e68d"/>
+	<symbol name="EP1INBC" address="EXTMEM:e68f"/>
+	<symbol name="EP2BCH" address="EXTMEM:e690"/>
+	<symbol name="EP2BCL" address="EXTMEM:e691"/>
+	<symbol name="EP4BCH" address="EXTMEM:e694"/>
+	<symbol name="EP4BCL" address="EXTMEM:e695"/>
+	<symbol name="EP6BCH" address="EXTMEM:e698"/>
+	<symbol name="EP6BCL" address="EXTMEM:e699"/>
+	<symbol name="EP8BCH" address="EXTMEM:e69c"/>
+	<symbol name="EP8BCL" address="EXTMEM:e69d"/>
+	<symbol name="EP0CS" address="EXTMEM:e6a0"/>
+	<symbol name="EP1OUTCS" address="EXTMEM:e6a1"/>
+	<symbol name="EP1INCS" address="EXTMEM:e6a2"/>
+	<symbol name="EP2CS" address="EXTMEM:e6a3"/>
+	<symbol name="EP4CS" address="EXTMEM:e6a4"/>
+	<symbol name="EP6CS" address="EXTMEM:e6a5"/>
+	<symbol name="EP8CS" address="EXTMEM:e6a6"/>
+	<symbol name="EP2FIFOFLGS" address="EXTMEM:e6a7"/>
+	<symbol name="EP4FIFOFLGS" address="EXTMEM:e6a8"/>
+	<symbol name="EP6FIFOFLGS" address="EXTMEM:e6a9"/>
+	<symbol name="EP8FIFOFLGS" address="EXTMEM:e6aa"/>
+	<symbol name="EP2FIFOBCH" address="EXTMEM:e6ab"/>
+	<symbol name="EP2FIFOBCL" address="EXTMEM:e6ac"/>
+	<symbol name="EP4FIFOBCH" address="EXTMEM:e6ad"/>
+	<symbol name="EP4FIFOBCL" address="EXTMEM:e6ae"/>
+	<symbol name="EP6FIFOBCH" address="EXTMEM:e6af"/>
+	<symbol name="EP6FIFOBCL" address="EXTMEM:e6b0"/>
+	<symbol name="EP8FIFOBCH" address="EXTMEM:e6b1"/>
+	<symbol name="EP8FIFOBCL" address="EXTMEM:e6b2"/>
+	<symbol name="SUDPTRH" address="EXTMEM:e6b3"/>
+	<symbol name="SUDPTRL" address="EXTMEM:e6b4"/>
+	<symbol name="SUDPTRCTL" address="EXTMEM:e6b5"/>
+	<symbol name="SETUPDAT_bmRequestType" address="EXTMEM:e6b8"/>
+	<symbol name="SETUPDAT_bmRequest" address="EXTMEM:e6b9"/>
+	<symbol name="SETUPDAT_wValueH" address="EXTMEM:e6ba"/>
+	<symbol name="SETUPDAT_wValueL" address="EXTMEM:e6bb"/>
+	<symbol name="SETUPDAT_wIndexH" address="EXTMEM:e6bc"/>
+	<symbol name="SETUPDAT_wIndexL" address="EXTMEM:e6bd"/>
+	<symbol name="SETUPDAT_wLengthH" address="EXTMEM:e6be"/>
+	<symbol name="SETUPDAT_wLengthL" address="EXTMEM:e6bf"/>
+	<symbol name="GPIFWFSELECT" address="EXTMEM:e6c0"/>
+	<symbol name="GPIFIDLECS" address="EXTMEM:e6c1"/>
+	<symbol name="GPIFIDLECTL" address="EXTMEM:e6c2"/>
+	<symbol name="GPIFCTLCFG" address="EXTMEM:e6c3"/>
+	<symbol name="GPIFADRH" address="EXTMEM:e6c4"/>
+	<symbol name="GPIFADRL" address="EXTMEM:e6c5"/>
+	<symbol name="FLOWSTATE" address="EXTMEM:e6c6"/>
+	<symbol name="FLOWLOGIC" address="EXTMEM:e6c7"/>
+	<symbol name="FLOWEQ0CTL" address="EXTMEM:e6c8"/>
+	<symbol name="FLOWEQ1CTL" address="EXTMEM:e6c9"/>
+	<symbol name="FLOWHOLDOFF" address="EXTMEM:e6ca"/>
+	<symbol name="FLOWSTB" address="EXTMEM:e6cb"/>
+	<symbol name="FLOWSTBEDGE" address="EXTMEM:e6cc"/>
+	<symbol name="FLOWSTBPERIOD" address="EXTMEM:e6cd"/>
+	<symbol name="GPIFTCB3" address="EXTMEM:e6ce"/>
+	<symbol name="GPIFTCB2" address="EXTMEM:e6cf"/>
+	<symbol name="GPIFTCB1" address="EXTMEM:e6d0"/>
+	<symbol name="GPIFTCB0" address="EXTMEM:e6d1"/>
+	<symbol name="EP2GPIFFLGSEL" address="EXTMEM:e6d2"/>
+	<symbol name="EP2GPIFPFSTOP" address="EXTMEM:e6d3"/>
+	<symbol name="EP2GPIFTRIG" address="EXTMEM:e6d4"/>
+	<symbol name="EP4GPIFFLGSEL" address="EXTMEM:e6da"/>
+	<symbol name="EP4GPIFPFSTOP" address="EXTMEM:e6db"/>
+	<symbol name="EP4GPIFTRIG" address="EXTMEM:e6dc"/>
+	<symbol name="EP6GPIFFLGSEL" address="EXTMEM:e6e2"/>
+	<symbol name="EP6GPIFPFSTOP" address="EXTMEM:e6e3"/>
+	<symbol name="EP6GPIFTRIG" address="EXTMEM:e6e4"/>
+	<symbol name="EP8GPIFFLGSEL" address="EXTMEM:e6ea"/>
+	<symbol name="EP8GPIFPFSTOP" address="EXTMEM:e6eb"/>
+	<symbol name="EP8GPIFTRIG" address="EXTMEM:e6ec"/>
+	<symbol name="XGPIFSGLDATH" address="EXTMEM:e6f0"/>
+	<symbol name="XGPIFSGLDATLX" address="EXTMEM:e6f1"/>
+	<symbol name="XGPOIFSGLDATLNOX" address="EXTMEM:e6f2"/>
+	<symbol name="GPIFREADYCFG" address="EXTMEM:e6f3"/>
+	<symbol name="GPIFREADYSTAT" address="EXTMEM:e6f4"/>
+	<symbol name="GPIFABORT" address="EXTMEM:e6f5"/>
+	<symbol name="EP0BUF" address="EXTMEM:e740"/>
+	<symbol name="EP1OUTBUF" address="EXTMEM:e780"/>
+	<symbol name="EP1INBUF" address="EXTMEM:e7c0"/>
+	<symbol name="EP2FIFOBUF" address="EXTMEM:f000"/>
+	<symbol name="EP4FIFOBUF" address="EXTMEM:f400"/>
+	<symbol name="EP6FIFOBUF" address="EXTMEM:f800"/>
+	<symbol name="EP8FIFOBUF" address="EXTMEM:fc00"/>
+	
+	<symbol name="entry" address="CODE:0000" entry="true" type="code" />
+	
+	<symbol name="ISR_RESUME" address="CODE:0033" entry="true" type="code" />
+	<symbol name="ISR_INT0" address="CODE:0003" entry="true" type="code" />
+	<symbol name="ISR_TIMER0" address="CODE:000b" entry="true" type="code" />
+	<symbol name="ISR_INT1" address="CODE:0013" entry="true" type="code" />
+	<symbol name="ISR_TIMER1" address="CODE:001b" entry="true" type="code" />
+	<symbol name="ISR_SERIAL0_TXRX" address="CODE:0023" entry="true" type="code" />
+	<symbol name="ISR_TIMER2" address="CODE:002b" entry="true" type="code" />
+	<symbol name="ISR_SERIAL1_TXRX" address="CODE:003b" entry="true" type="code" />
+	<symbol name="ISR_USB_AUTOVECTOR" address="CODE:0043" entry="true" type="code" />
+	<symbol name="ISR_USB_AUTOVECTOR_ADDR" address="CODE:0044" type="code_ptr" />
+	<symbol name="ISR_USB_AUTOVECTOR_ADDRH" address="CODE:0044" />
+	<symbol name="ISR_USB_AUTOVECTOR_ADDRL" address="CODE:0045" /> <!-- CPU replaces this value in memory during autovectoring -->
+	<symbol name="ISR_I2C" address="CODE:004b" entry="true" type="code" />
+	<symbol name="ISR_FIFO_GPIF_AUTOVECTOR" address="CODE:0053" entry="true" type="code" />
+	<symbol name="ISR_FIFO_GPIF_AUTOVECTOR_ADDR" address="CODE:0054" type="code_ptr" />
+	<symbol name="ISR_FIFO_GPIF_AUTOVECTOR_ADDRH" address="CODE:0054" />
+	<symbol name="ISR_FIFO_GPIF_AUTOVECTOR_ADDRL" address="CODE:0055" /> <!-- CPU replaces this value in memory during autovectoring -->
+	<symbol name="ISR_INT5" address="CODE:005b" entry="true" type="code" />
+	<symbol name="ISR_INT6" address="CODE:0063" entry="true" type="code" />
+    
+  </default_symbols>
+  
+  <default_memory_blocks>
+    <memory_block name="REG_BANK_1" start_address="INTMEM:0" length="0x8" initialized="false"/>
+    <memory_block name="REG_BANK_2" start_address="INTMEM:8" length="0x8" initialized="false"/>
+    <memory_block name="REG_BANK_3" start_address="INTMEM:10" length="0x8" initialized="false"/>
+    <memory_block name="REG_BANK_4" start_address="INTMEM:18" length="0x8" initialized="false"/>
+    <memory_block name="INTMEM" start_address="INTMEM:20" length="0xe0" initialized="false"/>
+    <memory_block name="BITS" start_address="BITS:00" bit_mapped_address="INTMEM:20" length="0x80" mode="rwv"/>
+    <memory_block name="SFR" start_address="SFR:80" length="0x80" initialized="false" mode="rwv"/>
+	
+	<!-- e000 to ffff -->
+    <memory_block name="SCRATCH" start_address="EXTMEM:e000" length="0x200" initialized="false"/>
+    <memory_block name="GPIF" start_address="EXTMEM:e400" length="0x80" initialized="false"/>
+	<memory_block name="REGISTERS" start_address="EXTMEM:e600" length="0x100" initialized="false" mode="rwv"/>
+	<memory_block name="EP0IO" start_address="EXTMEM:e740" length="0x40" initialized="false" mode="rwv"/>
+	<memory_block name="EP1OUT" start_address="EXTMEM:e780" length="0x40" initialized="false" mode="rwv"/>
+	<memory_block name="EP1IN" start_address="EXTMEM:e7c0" length="0x40" initialized="false" mode="rwv"/>
+	<memory_block name="EP2BUF" start_address="EXTMEM:f000" length="0x400" initialized="false" mode="rwv"/>
+	<memory_block name="EP4BUF" start_address="EXTMEM:f400" length="0x400" initialized="false" mode="rwv"/>
+	<memory_block name="EP6BUF" start_address="EXTMEM:f800" length="0x400" initialized="false" mode="rwv"/>
+	<memory_block name="EP8BUF" start_address="EXTMEM:fc00" length="0x400" initialized="false" mode="rwv"/>
+    
+	<!-- split SFR bitmapped regions since only each 8th register is bitmapped. -->
+    <memory_block name="SFR-BITS-IOA" start_address="BITS:80" bit_mapped_address="SFR:80" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-TCON" start_address="BITS:88" bit_mapped_address="SFR:88" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-IOB" start_address="BITS:90" bit_mapped_address="SFR:90" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-SCON0" start_address="BITS:98" bit_mapped_address="SFR:98" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-IOC" start_address="BITS:a0" bit_mapped_address="SFR:a0" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-IE" start_address="BITS:a8" bit_mapped_address="SFR:a8" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-IOD" start_address="BITS:b0" bit_mapped_address="SFR:b0" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-IP" start_address="BITS:b8" bit_mapped_address="SFR:b8" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-SCON1" start_address="BITS:c0" bit_mapped_address="SFR:c0" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-T2CON" start_address="BITS:c8" bit_mapped_address="SFR:c8" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-PSW" start_address="BITS:d0" bit_mapped_address="SFR:d0" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-EICON" start_address="BITS:d8" bit_mapped_address="SFR:d8" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-ACC" start_address="BITS:e0" bit_mapped_address="SFR:e0" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-EIE" start_address="BITS:e8" bit_mapped_address="SFR:e8" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-B" start_address="BITS:f0" bit_mapped_address="SFR:f0" length="0x8" mode="rwv"/>
+	<memory_block name="SFR-BITS-EIP" start_address="BITS:f8" bit_mapped_address="SFR:f8" length="0x8" mode="rwv"/>
+	
+  </default_memory_blocks>
+  
+</processor_spec>
