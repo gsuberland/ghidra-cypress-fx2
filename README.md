@@ -18,6 +18,14 @@ Either method should load the enum types into your program's data type manager.
 
 Next, run the provided ApplyCypressFX2RegisterEnums.java script. This will repack the enums to 1 byte (currently there's no way to specify enum sizes in .h imports, so they default to 4 bytes) and automatically apply all the types to the pre-defined register symbols.
 
+## Working with I2C dumps
+
+Cypress FX2 doesn't directly copy the data from the EEPROM into RAM. Instead, the EEPROM contains some structure that describes the layout of the data. If you've dumped firmware from an I2C EEPROM, you can't just load it directly into Ghidra.
+
+If you open your dump in a hex editor and find that the first byte is 0xC2, that's a C2 Load image. This is the most common - it configures custom VID/PID/DID values for the USB descriptor, and describes how to load blocks of EEPROM into RAM. You can use the c2_load_iic_to_mem.linq [LinqPad](https://www.linqpad.net/) script from this repository to transform the I2C dump into a memory image suitable for loading into Ghidra. The script should be compatible with LinqPad 6 for .NET Core (cross platform). If you don't want to use C# / LinqPad, you should be able to easily port it yourself just by reading the code.
+
+If the first byte in your dump is 0xC0, this is a slightly different format. Search "Cypress FX2 C0 Load" online for more information. I don't have an example of a C0 Load image and the documentation was somewhat vague, so I didn't implement that here.
+
 ## Current status
 
 The following registers are covered:
