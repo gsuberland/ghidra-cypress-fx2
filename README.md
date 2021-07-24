@@ -195,7 +195,7 @@ The following registers are covered:
 | EP8GPIFTRIG (0xE6EC)            | Yes                | No                  |
 | XGPIFSGLDATH (0xE6F0)           | Yes                | No                  |
 | XGPIFSGLDATLX (0xE6F1)          | Yes                | No                  |
-| XGPOIFSGLDATLNOX (0xE6F2)       | Yes                | No                  |
+| XGPIFSGLDATLNOX (0xE6F2)        | Yes                | No                  |
 | GPIFREADYCFG (0xE6F3)           | Yes                | No                  |
 | GPIFREADYSTAT (0xE6F4)          | Yes                | No                  |
 | GPIFABORT (0xE6F5)              | Yes                | No                  |

@@ -532,7 +532,7 @@
 	<symbol name="EP8GPIFTRIG" address="EXTMEM:e6ec"/>
 	<symbol name="XGPIFSGLDATH" address="EXTMEM:e6f0"/>
 	<symbol name="XGPIFSGLDATLX" address="EXTMEM:e6f1"/>
-	<symbol name="XGPOIFSGLDATLNOX" address="EXTMEM:e6f2"/>
+	<symbol name="XGPIFSGLDATLNOX" address="EXTMEM:e6f2"/>
 	<symbol name="GPIFREADYCFG" address="EXTMEM:e6f3"/>
 	<symbol name="GPIFREADYSTAT" address="EXTMEM:e6f4"/>
 	<symbol name="GPIFABORT" address="EXTMEM:e6f5"/>
