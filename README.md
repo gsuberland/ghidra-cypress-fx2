@@ -3,7 +3,27 @@ Ghidra processor definition for Cypress FX2, an 8051-based USB controller.
 
 All register definitions were created to match the "EZ-USB FX2 Technical Reference Manual" document from Cypress.
 
-Place cypress_fx2.pspec in Ghidra/Processors/8051/data/languages/
+Place cypress_fx2.pspec in `Ghidra/Processors/8051/data/languages/`
+
+Place ApplyCypressFX2RegisterEnums.java in `Ghidra/Processors/8051/ghidra_scripts/`
+
+Add the following language definition to `Ghidra/Processors/8051/data/languages/8051.ldefs`:
+
+```
+  <language processor="8051"
+            endian="big"
+            size="16"
+            variant="fx2"
+            version="2.0"
+            slafile="8051.sla"
+            processorspec="cypress_fx2.pspec"
+			manualindexfile="../manuals/8051.idx"
+            id="8051:BE:16:fx2">
+    <description>Cypress FX2</description>
+    <compiler name="default" spec="8051.cspec" id="default"/>
+    <external_name tool="IDA-PRO" name="8051"/>
+  </language>
+```
 
 ## Optional - Adding register enums
 
@@ -16,7 +36,7 @@ Load CypressFX2.h using File -> Parse C Header. There are two ways of loading it
 
 Either method should load the enum types into your program's data type manager.
 
-Next, run the provided ApplyCypressFX2RegisterEnums.java script. This will repack the enums to 1 byte (currently there's no way to specify enum sizes in .h imports, so they default to 4 bytes) and automatically apply all the types to the pre-defined register symbols.
+Next, run the provided ApplyCypressFX2RegisterEnums.java script from the Script Manager. This will repack the enums to 1 byte (currently there's no way to specify enum sizes in .h imports, so they default to 4 bytes) and automatically apply all the types to the pre-defined register symbols.
 
 ## Working with I2C dumps
 
